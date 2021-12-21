@@ -1,0 +1,529 @@
+/* mixin */ 
+@mixin f_around($pixels , $height: false, $weight: false , $color: false){
+	font-size: $pixels + px;
+	@if $weight{
+		font-weight: $weight;
+	}
+
+	@if $height{
+		line-height: $height / $pixels;
+	}
+
+	@if $color{
+		color: $color;
+	}
+}
+/* animation */ 
+@keyframes fadeIn {
+    0% {
+    opacity: 0
+    }
+
+    100% {
+    opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+    opacity: 0
+    }
+
+    100% {
+    opacity: 1
+    }
+}
+
+/* color */ 
+$mainColor:#000000;
+$white:#FFFFFF;
+/* base  */ 
+.md{
+    display: none;
+}
+a{
+    text-decoration: none;
+}
+body{
+	box-sizing: border-box;
+	margin:0;
+	padding:0;
+    font-family: '游明朝','Yu Mincho',YuMincho,'Hiragino Mincho Pro',serif;
+    animation: fadeIn 1.5s ease 0s 1 normal;
+}
+
+body *{
+	box-sizing: inherit;
+}
+/* header */ 
+header{
+    background-color: white;
+    width: 100%;
+    z-index: 11;
+    position: fixed;
+    .header__wrapper{
+        display: flex;
+        justify-content: space-between;
+        .header__left{
+            display: flex;
+            .header__logo{
+                margin: 20px 0px 20px 20px;
+            }
+            .gnav{
+                display: flex;
+                margin-left: 120px;
+                .gnav__link{
+                    height: 16px;
+                    padding: 32px 30px;
+                    &:last-of-type{
+                        margin-right: 0;
+                    }
+                    a{
+                    text-decoration: none;
+                    @include f_around(16, 16, 800, $mainColor);
+                    }
+                }
+            }
+        }
+        .reserve{
+            padding: 26px 0;
+            padding-bottom: 18px;
+            .reserve__button{
+                &::before{
+                    content: '';
+                    background-image: url('../img/calender.png');
+                    height: 22px;
+                    width: 22px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: 10px;
+                }
+                z-index: 99;
+                background-color: #978F10;
+                padding: 16px 37px 19px 37px;
+                margin: 13px 20px 13px 0px;
+                @include f_around(16, 16, 800, $white);
+                text-decoration: none;
+            }
+        }
+
+    }
+}
+/* fv */ 
+.fv{
+    z-index: 1;
+    background-image: url('../img/oheya-header.png');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 500px;
+    .fv__heading{
+        text-align: center;
+        @include f_around(34, 34, 800, $white);
+        padding-top: 233px;
+    }
+}
+/* onsen */ 
+.onsen{
+    z-index: 1;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding-top: 36px;
+    .onsen__wrapper{
+        .root{
+            a{
+                @include f_around(16, 32, normal, $mainColor);
+            }
+            span{
+                &::after{
+                    content: '>';
+                    margin: 0 10px;
+                }
+            }
+        }
+        .caption{
+            text-align: center;
+            margin-top: 98px;
+            p{
+                margin: 0 auto;
+                @include f_around(16, 32, normal, $mainColor);
+            }
+        }
+        .contents{
+            padding: 78px 0 150px 0;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            .content{
+                display: flex;
+                height: 100%;
+                position: relative;
+                margin-bottom: 224px;
+                &:nth-of-type(2){
+                    flex-direction: row-reverse;
+                    img{
+                        max-width: 525px;
+                    }
+                    .text{
+                        padding: 60px 20% 20px 4%;
+                        margin-left: 0;
+                        left: 0;
+                    }
+                }
+                img{
+                    width: 47%;
+                    height: 300px;
+                    z-index: 2;
+                }
+                .text{
+                    width: 73%;
+                    position: absolute;
+                    right: 0;
+                    padding:60px 4% 20px 24%;
+                    z-index: 1;
+                    transform: translateY(57px);
+                    max-width: 813px;
+                    height: 381px;
+                    background-image: url('../img/bg.png');
+                    h2{
+                        @include f_around(24, 24, normal, $mainColor);
+
+                    }
+                    .text__caption{
+                        margin: 52px 0;
+                        @include f_around(16, 32, normal, $mainColor);
+
+                    }
+                    .attention{
+                        @include f_around(14, 21, normal, $mainColor);
+                    }
+                }
+            }
+        }
+        .effcetion{
+            border-top: 1px solid #E7E7E7;
+            border-bottom: 1px solid #E7E7E7;
+            padding: 95.5px 0 74px 0;
+            h2{
+                margin-bottom: 51.5px;
+                @include f_around(26, 26, normal, $mainColor);
+                text-align: center;
+            }
+            table{
+                max-width: 880px;
+                margin: 0 auto;
+                tr{
+                    padding: 17.5px 0;
+                    display: block;
+                    border-top: 1px solid #E7E7E7;
+                    &:last-of-type{
+                        border-bottom: 1px solid #E7E7E7;
+                    }
+                    th{
+                        width: 11.5vw;
+                        text-align: left;
+                    }
+                }
+            }
+        }
+    }
+}
+/* footer */
+footer{
+    
+    .footer__contents{
+        text-align: center;
+        padding-top: 64px;
+        padding-bottom: 61px;
+        background-image: url('../img/bg3.png');
+        height: 100%;
+        display: block;
+        .footer__link{
+            
+            a{
+                writing-mode: vertical-rl;
+                text-decoration: none;
+                @include f_around(18, 18, 400, $mainColor);
+                letter-spacing: 4px;
+                &:nth-of-type(1){
+                margin-bottom: 30px;
+                }
+                &:nth-of-type(2){
+                    margin: 0 34px;
+                }
+            }
+        }
+        .footer__logo{
+            margin: 0 auto;
+            margin-top: 96px;
+            margin-bottom: 72px;
+        }
+        .footer__address{
+            justify-content: center;
+            display: flex;
+            margin-bottom: 23px;
+            p{
+                @include f_around(16, 16, normal, $mainColor);
+                &:nth-of-type(1){
+                    margin-right: 21px;
+                }
+            }
+        }
+        .footer__tell{
+            display: flex;
+            justify-content: center;
+            p{
+                @include f_around(16, 16, normal, $mainColor);
+                &:nth-of-type(1){
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+    .copy{
+        background-color: #000000;
+        text-align: center;
+        padding-top: 23px;
+        padding-bottom: 25px;
+        small{
+            @include f_around(12, 12, normal, $white);
+            
+        }
+    }
+}
+@media screen and (max-width:1000px) {
+    .md{
+        display: block;
+    }
+    .openbtn{
+        z-index: 4;
+        position: relative;
+        cursor: pointer;
+        width: 50px;
+        height:50px;
+        border-radius: 1px;
+        margin-top: 13px;
+        margin-right: 10px;
+        display: block;
+        span{
+            display: inline-block;
+            transition: all .4s;/*アニメーションの設定*/
+            position: absolute;
+            left: 14px;
+            height: 3px;
+            border-radius: 2px;
+            width: 30px;
+            background-color: #000000;
+            &:nth-of-type(1){
+                top: 15px;
+            }
+            &:nth-of-type(2) {
+                top:23px;
+            }
+            &:nth-of-type(3) {
+                top:31px;
+            }
+        }
+    }
+    .active{
+        span{
+            background-color: $white;
+            &:nth-of-type(1) {
+                top: 18px;
+                left: 18px;
+                transform: translateY(6px) rotate(-45deg);
+                width: 30px;
+            }
+            &:nth-of-type(2) {
+                opacity: 0;/*真ん中の線は透過*/
+            }
+            &:nth-of-type(3){
+                top: 30px;
+                left: 18px;
+                transform: translateY(-6px) rotate(45deg);
+                width: 30px;
+            }
+        }
+    }
+    
+    header{
+        .header__wrapper{
+            .header__left{
+                .gnav{
+                    display: none;
+                }
+            }
+            .reserve{
+                display: flex;
+                padding: 0;
+                .reserve__button{
+                    margin-right: 0;
+                }
+            }
+        }
+        .nav__list{
+            display: none;
+            position: absolute;
+            top: 0px;
+            right: 0;
+            z-index: 3;
+            background: #000000;
+            width: 70%;
+            text-align: right;
+            margin-left: auto;
+            height: 100vh;
+            ul{
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                li{
+                    margin: 30px 0;
+                    @include f_around(16, 16, normal, $white);
+                    a{
+                        color: #ffffff;
+                    }
+                }
+            }
+        }
+        .active{
+            display: block;
+            animation: fadeIn 1s;
+        }
+    }
+    .onsen{
+        .onsen__wrapper{
+            .effcetion{
+                border-top: unset;
+                margin: 0 4vw;
+                margin-bottom: 95px;
+                table{
+                    padding: 0 30px;
+                    tr{
+                        th{
+                            width: 100px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:768px) {
+    header{
+        .header__wrapper{
+            .header__left{
+                .gnav{
+                    display: none;
+                }
+            }
+        }
+    }
+    .onsen{
+        padding: 0;
+        padding-top: 33px;
+        .root{
+            padding: 0 4vw;
+        }
+        .caption{
+            padding: 0 4vw;
+        }
+        .onsen__wrapper{
+            .contents{
+                padding: 0;
+                display: block;
+                margin-top: 76px;
+                .content{
+                    display: block;
+                    margin-bottom:5%;
+                    background-blend-mode: darken;
+                    position: relative;
+                    &::before{
+                        content: '';
+                        background-color: rgba(0,0,0,.5);
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        left: 0;
+                    }
+                    &:first-of-type{
+                        background-image: url("../img/oheya01.jpg");
+                        background-position: center;
+                        background-size: cover;
+                    
+                    }
+                    &:nth-of-type(2){
+                        background-image: url("../img/oheya02.jpg");
+                        background-position: center;
+                        background-size: cover;
+                        .text{
+                            padding: 0;
+                            padding: 0 4vw;
+                        }
+                    }
+                    &:last-of-type{
+                        background-image: url("../img/oheya03.jpg");
+                        background-position: center;
+                        background-size: cover;
+                    }
+                    .text{
+                        h2{
+                            color: $white;
+                        }
+                        .text__caption{
+                            color: $white;
+                        }
+                        .attention{
+                            color: $white;
+                        }
+                        position: unset;
+                        width: 100%;
+                        background-image: none;
+                        padding: 0 4vw;
+                    }
+                    img{
+                        display: none;
+                    }
+                }
+            }
+            
+        }
+    }
+}
+@media screen and (max-width:600px) {
+    header{
+        .header__left{
+            .header__logo{
+                img{
+                    width: 163px;
+                }
+            }
+        }
+        .header__wrapper{
+            .reserve{
+                .reserve__button{
+                    padding:0;
+                    margin: auto 0;
+                    line-height: 40px;
+                    width: 110px;
+                    &::before{
+                        margin-left: 5px;
+                    }
+                }
+                
+            }
+        }
+    }
+    .onsen{
+        .onsen__wrapper{
+            .contents{
+                .content{
+                    margin-bottom: 1%;
+                }
+            }
+        }
+    }
+
+}
